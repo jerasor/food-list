@@ -40,17 +40,15 @@ function renderList(data) {
 const handleSubmit = function(ev) {
   ev.preventDefault()
   const f = ev.target
-  const user = {
-    userName: f.userName.value,
-    age: f.age.value,
-    favoriteColor: renderColor(f.favoriteColor.value),
+  const foodsForm = {
+    foodName: f.foodName.value,
   }
 
-  const users = document.querySelector('#users')
-  users.appendChild(renderList(user))
+  const foods = document.querySelector('#foods')
+  foods.appendChild(renderList(foodsForm))
 
   f.reset()
-  f.userName.focus()
+  f.foodName.focus()
 }
 
 form.addEventListener('submit', handleSubmit)
