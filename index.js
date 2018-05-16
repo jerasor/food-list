@@ -24,8 +24,12 @@ function renderListItem(label, value) {
     description.textContent += value
   }
 
+  const deleteButton = document.createElement('button')
+  deleteButton.textContent = "Delete"
+
   item.appendChild(term)
   item.appendChild(description)
+  item.appendChild(deleteButton)
   return item
 }
 
