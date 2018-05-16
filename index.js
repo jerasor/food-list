@@ -1,3 +1,5 @@
+const foodArray = []
+
 const form = document.querySelector('#foodForm')
 
 function renderColor(color) {
@@ -43,6 +45,8 @@ const handleSubmit = function(ev) {
   const foodsForm = {
     foodName: f.foodName.value,
   }
+
+  foodArray.push(foodsForm.foodName)
 
   const foods = document.querySelector('#foods')
   foods.appendChild(renderList(foodsForm))
