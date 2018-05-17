@@ -2,8 +2,30 @@ const foodArray = []
 
 const form = document.querySelector('#foodForm')
 
+function addImageToFood (image, food){
+
+    const foods = document.querySelector('#foods')
+
+    foods.lastElementChild.childNodes.forEach(function(element){
+        element.childNodes.forEach(function(childElements){
+            if (childElements.textContent === food) {
+                childElements.appendChild(image)
+            }
+        })
+    })
+
+}
+
 function renderImage(response) {
-  console.log(response)
+    const imageLink = response.items[0].link
+
+    const image = document.createElement('img')
+    image.setAttribute('src', imageLink)
+    image.setAttribute('width', '100rem')
+    image.setAttribute('height', '100rem')
+
+    addImageToFood(image, response.queries.request[0].searchTerms)
+    
 }
 
 function renderListItem(label, value) {
