@@ -45,7 +45,17 @@ function deleteFood(ev){
         }
     })
 
-    document.querySelector('#foods').removeChild(elementToDelete)
+    let foodNameToDelete = null
+
+    elementToDelete.lastChild.childNodes.forEach(function(element){
+        if (element.tagName === 'DD') {
+            foodNameToDelete = element.textContent
+        }
+    })
+
+    foodArray.splice(foodArray.indexOf(foodNameToDelete), 1)
+
+    document.querySelector('#foods').removeChild(elementToDelete)    
 
 }
 
