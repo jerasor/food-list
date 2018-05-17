@@ -27,10 +27,26 @@ function renderListItem(label, value) {
   const deleteButton = document.createElement('button')
   deleteButton.textContent = "Delete"
 
+  deleteButton.addEventListener('click', deleteFood)
+
   item.appendChild(term)
   item.appendChild(description)
   item.appendChild(deleteButton)
   return item
+}
+
+function deleteFood(ev){
+
+    let elementToDelete = null
+
+    ev.path.forEach(function(element) {
+        if (element.tagName === 'DL') {
+            elementToDelete = element
+        }
+    })
+
+    document.querySelector('#foods').removeChild(elementToDelete)
+
 }
 
 function renderList(data) {
