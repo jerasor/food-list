@@ -2,12 +2,8 @@ const foodArray = []
 
 const form = document.querySelector('#foodForm')
 
-function renderColor(color) {
-  const colorDiv = document.createElement('div')
-  colorDiv.style.backgroundColor = color
-  colorDiv.style.width = '6rem'
-  colorDiv.style.height = '3rem'
-  return colorDiv
+function renderImage(response) {
+  console.log(response)
 }
 
 function renderListItem(label, value) {
@@ -77,6 +73,11 @@ const handleSubmit = function(ev) {
   }
 
   foodArray.push(foodsForm.foodName)
+
+  const googleScript = document.createElement('script')
+  googleScript.setAttribute('src', `https://www.googleapis.com/customsearch/v1?key=AIzaSyCuDShnGALaTgS3-M25SaLHoQwuVvHbe0s&cx=001914932319504676625:x16q1stbpv4&q=${foodsForm.foodName}&searchType=image&callback=renderImage`)
+
+  document.querySelector('body').appendChild(googleScript)
 
   const foods = document.querySelector('#foods')
   foods.appendChild(renderList(foodsForm))
